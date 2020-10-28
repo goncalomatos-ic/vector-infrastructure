@@ -1,0 +1,39 @@
+version: '3.6'
+services:
+  db:
+    image: postgres
+    restart: always
+    container_name: db
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=root
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+
+  vector-api:
+    build: ./vector-api
+    image: vector-api
+    container_name: vector-api
+    restart: always
+    ports:
+      - '8000:8000'
+    environment:
+      POSTGRES_IP: db
+      DATABASE_URL: postgresql://root:root@db:5432/cards
+    depends_on:
+      - db
+
+  vector-app:
+    build: ./vector-app
+    image: vector-app
+    container_name: vector-app
+    restart: always
+    ports:
+      - '8001:80'
+    environment:
+      API_ENDPOINT: http://vector-api:8000
+    depends_on:
+      - vector-api
