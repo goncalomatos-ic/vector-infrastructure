@@ -21,7 +21,6 @@ services:
     ports:
       - '8000:8000'
     environment:
-      POSTGRES_IP: db
       DATABASE_URL: postgresql://root:root@db:5432/cards
     depends_on:
       - db
@@ -32,8 +31,9 @@ services:
     container_name: vector-app
     restart: always
     ports:
-      - '8001:80'
+      - '3000:3000'
     environment:
-      API_ENDPOINT: http://vector-api:8000
+      REACT_APP_API_ENDPOINT: http://localhost:8000
     depends_on:
       - vector-api
+    stdin_open: true
