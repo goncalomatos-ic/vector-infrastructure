@@ -22,3 +22,5 @@ sh startup.sh
 ```
 
 The API will be running on `localhost:8000` and the APP on `localhost:3000`
+
+[API Documentation:](https://github.com/goncalomatos-ic/vector-api)
