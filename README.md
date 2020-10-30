@@ -13,7 +13,7 @@ git clone git@github.com:goncalomatos-ic/vector-infrastructure.git
 
 ## Run
 
-TL;DR Startup.sh clones `API` and `APP` repo's, then `docker-compose build & run`
+TL;DR Startup.sh clones [API](https://github.com/goncalomatos-ic/vector-api) and [APP](https://github.com/goncalomatos-ic/vector-app) repo's, then `docker-compose build & run`
 
 Startup.sh is a bash script that will do "magic" for us. It will start by cloning the APP and the API repositories and then it will start docker-compose build. When it's done, docker-compose run will fire up. Dockercompose file is responsible for starting up a PostgreSQL service, our API and also our APP. Each service dependencies are managed by each Dockerfile and it's respective package manager.
 
@@ -21,6 +21,4 @@ Startup.sh is a bash script that will do "magic" for us. It will start by clonin
 sh startup.sh
 ```
 
-The API will be running on `localhost:8000` and the APP on `localhost:3000`
-
-[API Documentation:](https://github.com/goncalomatos-ic/vector-api)
+The [API](https://github.com/goncalomatos-ic/vector-api) will be running on `localhost:8000` and the [APP](https://github.com/goncalomatos-ic/vector-app) on `localhost:3000`
